@@ -1,11 +1,24 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.IO;
 using System.Reflection;
+using System.Diagnostics;
 using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using JG.TestFramework;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace JG.TestFramework
 {
@@ -164,6 +177,16 @@ namespace JG.TestFramework
         [TestCleanup]
         public virtual void TestCleanup()
         {
+            // if the test fails take a screenshot
+            if (this.TestContext.CurrentTestOutcome == UnitTestOutcome.Failed || this.TestContext.CurrentTestOutcome == UnitTestOutcome.Error)
+            {
+                var screenshotFilePath = Path.Combine(this.TestContext.TestRunResultsDirectory, string.Concat(this.TestContext.TestName, ".png"));
+                Trace.TraceInformation(screenshotFilePath);
+                var screenshot = ((ITakesScreenshot)Driver).GetScreenshot();
+                screenshot.SaveAsFile(screenshotFilePath, ScreenshotImageFormat.Png);
+                this.TestContext.AddResultFile(screenshotFilePath);
+            }
+
             Driver.Dispose();
         }
 
