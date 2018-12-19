@@ -38,5 +38,27 @@ namespace JG.Demo.CoreTests
             Assert.AreEqual("Worldwide Express - Shipping Logistics for Small and Midsize Businesses", actTitle, false);
             Assert.IsTrue(actTitle.Contains(expTitle), "Issue: title missing company name. Exp="+expTitle+ " Act="+actTitle);
         }
+
+        [TestMethod]
+        public void WWEXHomePage_Navigate_QALead()
+        {
+            // Navigate to page
+            var homePage = new WWEXHomePage(this.Driver, this.BaseUrl, "/");
+            homePage.Navigate();
+
+            System.Threading.Thread.Sleep(10000);
+
+            // Navigate to career page
+            homePage.menuCareers.Click();
+
+            // Navigate to Tech Dev page
+            homePage.modTechDev.Click();
+            homePage.modTechDevPopup.Click();
+
+            // Navigate to QA Lead page
+            homePage.modTechDevQALead.Click();
+
+            Assert.IsTrue(homePage.logo.Displayed, "Logo is not displayed");
+        }
     }
 }
