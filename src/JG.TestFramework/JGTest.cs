@@ -180,11 +180,11 @@ namespace JG.TestFramework
             // if the test fails take a screenshot
             if (this.TestContext.CurrentTestOutcome == UnitTestOutcome.Failed || this.TestContext.CurrentTestOutcome == UnitTestOutcome.Error)
             {
-                var screenshotFilePath = Path.Combine(this.TestContext.TestRunResultsDirectory, string.Concat(this.TestContext.TestName, ".png"));
-                Trace.TraceInformation(screenshotFilePath);
-                var screenshot = ((ITakesScreenshot)Driver).GetScreenshot();
-                screenshot.SaveAsFile(screenshotFilePath, ScreenshotImageFormat.Png);
-                this.TestContext.AddResultFile(screenshotFilePath);
+                //var screenshotFilePath = Path.Combine(this.TestContext.TestRunResultsDirectory, string.Concat(this.TestContext.TestName, ".png"));
+                //Trace.TraceInformation(screenshotFilePath);
+                //var screenshot = ((ITakesScreenshot)Driver).GetScreenshot();
+                //screenshot.SaveAsFile(screenshotFilePath, ScreenshotImageFormat.Png);
+                //this.TestContext.AddResultFile(screenshotFilePath);
             }
 
             Driver.Dispose();

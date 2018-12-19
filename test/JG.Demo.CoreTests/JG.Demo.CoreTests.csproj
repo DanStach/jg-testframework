@@ -7,10 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="chrome-wwex.runsettings" />
     <None Remove="firefox.runsettings" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="chrome-wwex.runsettings">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Generator>SettingsSingleFileGenerator</Generator>
+    </Content>
     <Content Include="firefox.runsettings">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Generator>SettingsSingleFileGenerator</Generator>
