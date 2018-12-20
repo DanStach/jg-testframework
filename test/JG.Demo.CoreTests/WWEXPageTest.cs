@@ -46,19 +46,25 @@ namespace JG.Demo.CoreTests
             var homePage = new WWEXHomePage(this.Driver, this.BaseUrl, "/");
             homePage.Navigate();
 
-            System.Threading.Thread.Sleep(10000);
+            System.Threading.Thread.Sleep(5000);
 
             // Navigate to career page
             homePage.menuCareers.Click();
+            System.Threading.Thread.Sleep(1000);
 
             // Navigate to Tech Dev page
             homePage.modTechDev.Click();
+            System.Threading.Thread.Sleep(1000);
             homePage.modTechDevPopup.Click();
+            System.Threading.Thread.Sleep(1000);
 
             // Navigate to QA Lead page
             homePage.modTechDevQALead.Click();
+            System.Threading.Thread.Sleep(5000);
 
-            Assert.IsTrue(homePage.logo.Displayed, "Logo is not displayed");
+            // verify url
+            string url = Driver.Url;
+            Assert.IsTrue(url.Contains("jobs.jobvite.com"), "Issue with url");
         }
     }
 }

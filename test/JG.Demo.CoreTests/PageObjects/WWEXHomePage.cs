@@ -11,7 +11,7 @@ namespace JG.Demo.CoreTests.PageObjects
         private string logoXPath= "//*[@id='logo']";
         private string menuCareersXPath = "//*[@id='menu-main-1']/li[4]";
         private string modTechDevXPath = "//*[@id='team']/div/ul/li[8]";
-        private string modTechDevPopupXPath = "//*[@id='perk8' and class='lightbox featherlight-inner']/div/a"; 
+        private string modTechDevPopupXPath = "//*[@id='perk8' and @class='lightbox featherlight-inner']/div/a"; 
         private string modTechDevQALeadXPath = "/html/body/div/div/div/div/article/div/table/tbody/tr[4]/td[1]/a";
         public WWEXHomePage(IWebDriver driver, Uri baseUrl, string path) : base(driver, baseUrl, path)
         {
